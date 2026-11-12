@@ -61,4 +61,19 @@ public class LineupService {
         }
         return response;
     }
+
+    public Act getActById(Long id) {
+        Act response = new Act();
+        for (Act act: acts.values()) {
+            if (act.getId().equals(id)) {
+                response = act;
+            }
+        }
+        return response;
+    }
+
+    public void addAct(Act act) {
+        act.setId(nextId);
+        acts.values().add(act);
+    }
 }
