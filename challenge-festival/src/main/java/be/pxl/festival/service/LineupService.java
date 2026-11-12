@@ -5,6 +5,7 @@ import be.pxl.festival.model.FestivalDay;
 import be.pxl.festival.model.Genre;
 import be.pxl.festival.model.Stage;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -49,5 +50,15 @@ public class LineupService {
 
     public List<Act> findAll() {
         return new ArrayList<>(acts.values());
+    }
+
+    public List<Act> getActsByDay(FestivalDay day) {
+        List<Act> response = new ArrayList<>();
+        for (Act act: acts.values()) {
+            if (act.getDay() == day) {
+                response.add(act);
+            }
+        }
+        return response;
     }
 }

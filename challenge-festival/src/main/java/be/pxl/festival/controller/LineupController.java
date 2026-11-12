@@ -1,8 +1,10 @@
 package be.pxl.festival.controller;
 
 import be.pxl.festival.model.Act;
+import be.pxl.festival.model.FestivalDay;
 import be.pxl.festival.service.LineupService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,4 +24,7 @@ public class LineupController {
     public List<Act> findAll() {
         return lineupService.findAll();
     }
+
+    @GetMapping("{day}")
+    public List<Act> findAll(@PathVariable FestivalDay day) {return lineupService.getActsByDay(day);}
 }
